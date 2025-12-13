@@ -14,12 +14,12 @@ int binToDec(int binNum) {
         n /= 10;
         pow = pow * 2;
     }
-    cout << decNum;
+
     return decNum;
 }
 
 int main() {
 
-    binToDec(101);
+    cout << binToDec(101);
     return 0;
 }
