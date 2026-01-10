@@ -15,5 +15,7 @@ int main() {
     
     mySet.find(43) != mySet.end() ? cout<< "mil gya" : cout << "nahi mila";
     return 0;
+
+    // note: if mySet.find(number) will not find the number in the set it will return .end()
 }
 
