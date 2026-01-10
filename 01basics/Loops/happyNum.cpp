@@ -1,52 +1,44 @@
 #include <iostream>
-#include <unordered_set> 
+#include <unordered_set>
 using namespace std;
 
-unordered_set<int> Set;
-
-
-int isHappy(int n) {
-
+int sumOfSquares(int n) {
     int sum = 0;
-
-    while(n > 0) {
+    while (n>0) {
         int ld = n%10;
         sum += ld*ld;
         n/=10;
     }
-    if(Set.find(sum) == Set.end()) {
-        Set.insert(sum);
-    }
-    else {
-        return -2;
-    }
-    
-    if (sum == 1) return -1;
     return sum;
 }
 
-int main() {
+bool isHappy(int n) {
 
-    int n;
-    cin >> n;
+    unordered_set<int> seen;
 
-    int res = isHappy(n);
-
-    while(1) {
+    while(n!=1) {
+        if(seen.find(n) != seen.end()){
+            return false;
+        }
+       
+        seen.insert(n);
+        n = sumOfSquares(n);
         
-        if(res == -2) {
-            cout << "Gand mara";
-            break;
-        }
-        if(res == -1) {
-            cout << "yes";
-            break;
-            
-        }
-        else {
-            res = isHappy(res);
-        }
     }
     
+    return true;
+
+}
+
+int main() {
+    int num;
+    cin >> num;
+    if(isHappy(num)) {
+        cout << "Happy Num";
+    }
+    else {
+        cout << "Not a happy num";
+    }
+    return 0;
     
 }
