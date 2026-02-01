@@ -13,23 +13,13 @@ int main() {
         for(int j=1; j<=i; j++) {
             if(i % 2 == 0) 
             {
-                cout << one;
-                if(one == 1) {
-                    one = 0;
-                }
-                else {
-                    one = 1;
-                }
+                cout << one%2;
+                one++;
             }
             else 
             {
-                cout << zero;
-                if(zero == 0) {
-                    zero = 1;
-                }
-                else {
-                    zero = 0;
-                }
+                cout << zero%2;
+                zero++;
             }
         }
         cout << endl;
