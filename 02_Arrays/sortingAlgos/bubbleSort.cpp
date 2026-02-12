@@ -39,6 +39,5 @@ int main()
     return 0;
 }
 
-// stockBuySell
-// TC, O(n+n) =  O(2n)
-// ignore constant TC: O(n)
+// bubble sort
+// TC: O(2n)
