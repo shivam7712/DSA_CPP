@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-void insertionSort(int *nums, int n)
+void insertionSort(int *nums, int n) // TC: O(n2)
 {
     for(int i=1; i<n; i++)
     {  
