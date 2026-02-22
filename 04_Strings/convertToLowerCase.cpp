@@ -6,14 +6,14 @@ int main()
     char ch;
     cin >> ch;
 
-    if( ch >= 'a' && ch<='z')
-    {
+    if( ch >= 'A' && ch<='Z')
+    {   
+        ch += 32;
         cout << ch << endl;
     }
-    else {
-        ch += 32;
-        cout << ch << endl; 
-    }
+    
+    cout << ch << endl; 
+    
     return 0;
 }
 
