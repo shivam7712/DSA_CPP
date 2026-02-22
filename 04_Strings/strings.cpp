@@ -8,8 +8,10 @@ int main()
     // cin >> s;  if type "Hello world" it will only take Hello
 
     getline(cin, s);
-    cout << s;
+    int n = s.size();
 
+    cout << "string is " << s << endl;
+    cout << "size of string " << n << endl;
 
     return 0;
 }
