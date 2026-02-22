@@ -10,6 +10,7 @@ int main()
     {   
         ch += 32;
         cout << ch << endl;
+        return 0;
     }
     
     cout << ch << endl; 
