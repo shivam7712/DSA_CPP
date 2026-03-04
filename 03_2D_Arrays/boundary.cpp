@@ -1,47 +1,49 @@
 #include <iostream>
 using namespace std;
 
-int main()
+void printBoundary(int mat[4][4], int m, int n)
 {
-    int m, n;
-    cin >> m >> n;
+    int sr = 0;
+    int sc = 0;
+    int ec = 3;
+    int er = 3;
 
-    int nums[m][n];
-
-    for (int i = 0; i < m; i++)
+    for (int j = sc; j <= ec; j++)
     {
-        for (int j = 0; j < n; j++)
-        {
-            cin >> nums[i][j];
-        }
+        cout << mat[sr][j] << " ";
     }
-
-    for (int j = 0; j < n; j++)
+    for (int i = sr + 1; i <= er; i++)
     {
-        cout << nums[0][j] << " ";
+        cout << mat[i][ec] << " ";
     }
-
-    for (int i = 1; i < m; i++)
-    {
-        cout << nums[i][n - 1] << " ";
-    }
-
     if (m > 1)
     {
-        for (int j = n-2; j >=0; j--)
+        for (int j = ec - 1; j >= sc; j--)
         {
-            cout << nums[m-1][j] << " ";
+            cout << mat[er][j] << " ";
         }
     }
-    if(n > 1)
+    if (n > 1)
     {
-        for(int i = m-2; i>0; i--)
+        for (int i = er - 1; i >= sr + 1; i--)
         {
-            cout << nums[i][0] <<  " ";
+            cout << mat[i][sc] << " ";
         }
     }
+}
+
+int main()
+{
+    int mat[4][4] = {
+        {1, 2, 3, 4},
+        {5, 6, 7, 8},
+        {10, 11, 12, 13},
+        {14, 15, 16, 17}};
+
+    printBoundary(mat, 4, 4);
     return 0;
 }
 
-
-// print boundary
+// don't look at the matrix passing part 
+// at the time of writing this code, i don't know about passing matrix
+// i have hardcoded it
