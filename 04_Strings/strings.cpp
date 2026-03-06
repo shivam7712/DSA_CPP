@@ -13,6 +13,11 @@ int main()
     cout << "string is " << s << endl;
     cout << "size of string " << n << endl;
 
+    for( char ch: s) 
+    {
+        cout << ch << " ";
+    }
+
     return 0;
 }
 
