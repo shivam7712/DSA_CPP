@@ -14,6 +14,12 @@ int getIthBit(int n, int i)
     else return 1;
 }
 
+int clearIthBit(int n, int i)
+{
+    int bitmask = ~(1 << i);
+    return (bitmask & n);
+}
+
 int main()
 {
     int num, i;
@@ -22,8 +28,10 @@ int main()
 
     int result = getIthBit(num, i);
     int result2 = setIthBit(num, i);
+    int result3 = clearIthBit(num, i);
     cout << result << endl;
     cout << result2 << endl;
+    cout << result3 << endl;
 
     return 0;
 }
@@ -39,4 +47,10 @@ int main()
 /* 
     set ith Bit 
     same bitmake used to getIthBit just return (bitmask | n); 
+*/
+
+/* 
+    clear ith Bit
+    same bitmask just do ~(bitmask)
+    result = bitmask & result
 */
