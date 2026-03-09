@@ -28,10 +28,17 @@ int main()
     return 0;
 }
 
-// approach - pending
+// approach
 
 /* 
     objective: to calculate x to the power n
-    
+
+    1. n = 5.  i.e. 1  0  1
+                    \  \  \
+                    81 9  3
+    2. every bit is mapped with 3 to power p and p will be doubled every time 
+
+    3. store result every time the bit is 1 other wise skip. e.g. ans = ans * x;
+    4. but every time we need to find sq of x => x = x*x;
 */
 
