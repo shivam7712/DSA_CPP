@@ -28,4 +28,3 @@ int main()
 }
 
 //  can be more optimized by skipping odd numbers
-
