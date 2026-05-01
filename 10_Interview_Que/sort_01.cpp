@@ -5,10 +5,28 @@ using namespace std;
 
 // sort the 0 and 1
 
+
+// in one pass
+void sort(vector<int> &v)
+{
+    int l = 0;
+    int r = v.size()-1;
+
+    while(l<=r)
+    {
+        if(v[l] == 0) l++;
+        else 
+        {
+            swap(v[l], v[r]);
+            r--;
+        }
+    }
+}
+
 int main()
 {
-    long long n, k;
-    cin >> n >> k;
+    int n;
+    cin >> n;
 
     vector<int> A(n);
 
@@ -17,7 +35,7 @@ int main()
         cin >> A[i];
     }
 
-    int countZero = 0;
+    /* int countZero = 0;
     int countOne = 0;
 
     for(int i=0; i<n; i++)
@@ -37,7 +55,9 @@ int main()
     {
         A[i++] = 1;
         countOne--;
-    }
+    } */
+
+    sort(A);
 
     for(int i=0; i<n; i++)
     {
