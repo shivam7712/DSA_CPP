@@ -5,16 +5,16 @@ using namespace std;
 
 int find(vector<int> v, int t)
 {
-    int r = 0;
-    int l = v.size() - 1;
+    int l = 0;
+    int r = v.size() - 1;
 
-    while (r<=l)
+    while (l<=r)
     {
         int mid = (r+l) / 2;
 
         if(v[mid] == t) return mid;
-        else if(v[mid] > t) l = mid + 1;
-        else r = mid - 1;
+        else if(v[mid] > t) r = mid - 1;
+        else l = mid + 1;
     }
 
     return -1;
