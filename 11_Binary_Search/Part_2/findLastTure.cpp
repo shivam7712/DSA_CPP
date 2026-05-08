@@ -41,6 +41,7 @@ int main()
     {
         cin >> A[i];
     }  
+    
 
     cout << findLastTrue(A);
     
