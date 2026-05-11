@@ -7,6 +7,7 @@ using namespace std;
 
 int findLargestElement(vector<long long> &v, long long x)
 {
+    
     int l = 0;
     int r = v.size() - 1;
     int ans = -1;
