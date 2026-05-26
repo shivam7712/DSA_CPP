@@ -3,7 +3,6 @@ using namespace std;
 
 // find all powers of two
 
-
 int powOfTwo(int n)
 {
     int ans = 1;
