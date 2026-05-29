@@ -2,17 +2,15 @@
 #include <vector>
 using namespace std;
 
-void fDec(int n)
+void f(int n)
 {
-    if(n == 0) return;
+    if(n==1) 
+    {
+        cout << n << "\n";
+        return;
+    }
     cout << n << "\n";
-    fDec(n-1);
-}
-
-void fInc(int n)
-{
-    if(n==1) return;
-    fInc(n-1);
+    f(n-1);
     cout << n << "\n";
 }
 
@@ -21,8 +19,7 @@ int main()
     int n;
     cin >> n;
 
-    fDec(n);
-    fInc(n);
+    f(n);
 
     return 0;
 }
