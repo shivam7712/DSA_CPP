@@ -23,6 +23,7 @@ void f(int curr, int n, int k, vector<int> &path)
 
 int main()
 {
+    
     int n, k;
     cin >> n >> k;
 
