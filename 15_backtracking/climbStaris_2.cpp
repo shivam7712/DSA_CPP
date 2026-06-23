@@ -2,33 +2,35 @@
 #include <vector>
 using namespace std;
 
-void f(int curr, int n, int k, vector<int> &path)
+void printPath(vector<int>& path)
 {
-    if(curr == n)
+    for(int x: path) cout << x << " ";
+    cout << "\n";
+}
+
+void f(int curr, int N, int K,vector<int>& path)
+{
+    if(curr > N) return;
+    if(curr == N) 
     {
-        for(int x : path) cout << x << " ";
-        cout << "\n";
+        printPath(path);
         return;
     }
 
-    for(int i = 1; i <= k; i++)
+    for(int i=1; i<=K; i++)
     {
-        if(curr + i > n) break;
-
         path.push_back(i);
-        f(curr + i, n, k, path);
+        f(curr+i, N, K, path);
         path.pop_back();
     }
+    
 }
 
 int main()
 {
-    
-    int n, k;
-    cin >> n >> k;
-
+    int N, K;
+    cin >> N >> K;
     vector<int> path;
-    f(0, n, k, path);
-
+    f(0, N, K, path);
     return 0;
 }
