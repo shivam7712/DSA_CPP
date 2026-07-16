@@ -50,7 +50,7 @@ bool canPlace(char digit, vector<vector<char>> &grid, int r, int c)
     return true;
 }
 
-bool placeNumbers(vector<vector<char>>& grid, int i, int j, int n)
+bool f(vector<vector<char>>& grid, int i, int j, int n)
 {
     if(i == n)
     {
@@ -59,32 +59,28 @@ bool placeNumbers(vector<vector<char>>& grid, int i, int j, int n)
     }
     if(j == n)
     {
-        return placeNumbers(grid, i+1, 0, n);
+        return f(grid, i+1, 0, n);
     }
-
     if(grid[i][j] != '.')
     {
-        return placeNumbers(grid, i, j+1, n);
+        return f(grid, i, j+1, n);
     }
-
     else
     {
-        for(char digit='1' ; digit<='9'; digit++)
+        for(char num = '1'; num <= '9'; num++)
         {
-            if(canPlace(digit, grid, i, j))
-                    {
-                        grid[i][j] = digit;
-
-                        if(placeNumbers(grid, i, j + 1, n))
-                            return true;
-
-                        grid[i][j] = '.';
-                    }
+            if(canPlace(num, grid, i, j))
+            {
+                grid[i][j] = num;
+                if(f(grid, i, j+1, n)) return true;
+                grid[i][j] = '.';
+            }
         }
     }
     return false;
-
 }
+
+
 
 int main()
 {
@@ -101,7 +97,7 @@ int main()
     }
 
 
-    placeNumbers(grid, 0, 0, n);
+    f(grid, 0, 0, n);
 
 
 
