@@ -1,0 +1,105 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+void printGrid(vector<vector<char>> &grid)
+{
+    for(vector<char> &i: grid)
+    {
+        for(char &ele: i) cout << ele;
+        cout << "\n";
+    }
+}
+
+bool canPlace(char digit, vector<vector<char>> &grid, int r, int c)
+{
+
+    int i = r;
+    int j = 0;
+
+    // row check
+    for(j=0; j<grid.size(); j++)
+    {
+        if(grid[i][j] == digit) return false;
+    }
+
+    // column check
+    i = 0;
+    j = c;
+
+    for(i=0; i<grid.size(); i++)
+    {
+        if(grid[i][j] == digit) return false;
+    }
+
+    // 3x3 subgrid check
+    // find starting point of grid
+
+    i = (r / 3) * 3;
+    j = (c / 3) * 3;
+
+    for(int row = i; row < i+3; row++)
+    {
+        for(int col = j; col < j+3; col++)
+        {
+            if(digit == grid[row][col]) return false;
+        }
+    }
+
+    return true;
+}
+
+void f(vector<vector<char>>& grid, int i, int j, int n)
+{
+    if(i == n)
+    {
+        printGrid(grid);
+        return;
+    }
+    if(j == n)
+    {
+        f(grid, i+1, 0, n);
+        return;
+    }
+    if(grid[i][j] != '.')
+    {
+        f(grid, i, j+1, n);
+    }
+    else
+    {
+        for(char num = '1'; num <= '9'; num++)
+        {
+            if(canPlace(num, grid, i, j))
+            {
+                grid[i][j] = num;
+                f(grid, i, j+1, n);
+                grid[i][j] = '.';
+            }
+        }
+    }
+}
+
+
+
+int main()
+{
+    const int n = 9;
+
+    vector<vector<char>> grid(n, vector<char>(n));
+
+    for(int i=0; i<n; i++)
+    {
+        for(int j=0; j<n; j++)
+        {
+            cin >> grid[i][j];
+        }
+    }
+
+
+    f(grid, 0, 0, n);
+
+
+
+    return 0;
+}
