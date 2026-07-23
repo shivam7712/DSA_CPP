@@ -3,70 +3,62 @@
 
 using namespace std;
 
-void merge(vector<int> &arr, int l, int mid, int r)
+void merge(vector<int> &first, vector<int> &second, int n, int m)
 {
+    int i = 0;
+    int j = 0;
 
-    int i = l;
-    int j = mid + 1;
     int idx = 0;
 
-    int x = r - l + 1;
+    int x = n + m;
     vector<int> result(x);
 
-    while(i < mid+1 && j < r+1)
+    while(i < n && j < m)
     {
-        if(arr[i] <= arr[j])
+        if(first[i] <= second[j])
         {
-            result[idx++] = arr[i++];
+            result[idx++] = first[i++];
         }
         else{
-            result[idx++] = arr[j++];
+            result[idx++] = second[j++];
         }
     }
 
-    while(i < mid+1)
+    while(i < n)
     {
-        result[idx++] = arr[i++];
+        result[idx++] = first[i++];
     }
-    while(j < r+1)
+    while(j < m)
     {
-        result[idx++] = arr[j++];
-    }
-
-    for(int i=0; i<x; i++)
-    {
-        arr[l++] = result[i];
+        result[idx++] = second[j++];
     }
 
-}
+    for(int val: result) cout << val << " ";
 
-void mergeSort(vector<int> &arr, int l, int r)
-{
-
-    if(l == r) return;
-    int mid = (l+r) >> 1;
-
-    mergeSort(arr, l, mid);
-    mergeSort(arr, mid+1, r);
-
-    merge(arr, l, mid, r);
 }
 
 int main()
 {
-    int n;
-    cin >> n;
+    int n, m;
+    cin >> n >> m;
 
-    vector<int> arr(n);
+    vector<int> first(n);
+    vector<int> second(m);
 
-    for (int i = 0; i < n; i++)
+    for(int i=0; i<n; i++)
     {
-        cin >> arr[i];
+        cin >> first[i];
+    }
+    for(int i=0; i<m; i++)
+    {
+        cin >> second[i];
     }
 
-    mergeSort(arr, 0, n-1);
+    merge(first, second, n, m);
 
-    for(int i: arr) cout << i << " ";
+
+
+
 
     return 0;
 }

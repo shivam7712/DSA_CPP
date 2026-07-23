@@ -1,64 +1,79 @@
 #include <iostream>
 #include <vector>
-
 using namespace std;
 
-void merge(vector<int> &first, vector<int> &second, int n, int m)
+void merge(vector<int> &arr, int l, int mid, int r)
 {
+    int n1 = mid-l+1;
+    int n2 = r-mid;
+
+    vector<int> L(n1);
+    vector<int> R(n2);
+
+    for(int i=0; i<n1; i++)
+    {
+        L[i] = arr[i+l];
+    }
+    for(int i=0; i<n2; i++)
+    {
+        R[i] = arr[mid + 1 + i];
+    }
+
+    int k = l;
     int i = 0;
     int j = 0;
 
-    int idx = 0;
-
-    int x = n + m;
-    vector<int> result(x);
-
-    while(i < n && j < m)
+    while(i < n1 && j < n2)
     {
-        if(first[i] <= second[j])
+        if(L[i] <= R[j])
         {
-            result[idx++] = first[i++];
+            arr[k++] = L[i++];
         }
-        else{
-            result[idx++] = second[j++];
+        else
+        {
+            arr[k++] = R[j++];
         }
     }
 
-    while(i < n)
+    while(i < n1)
     {
-        result[idx++] = first[i++];
+        arr[k++] = L[i++];
     }
-    while(j < m)
+    while(j < n2)
     {
-        result[idx++] = second[j++];
+        arr[k++] = R[j++];
     }
 
-    for(int val: result) cout << val << " ";
 
+}
+
+void mergeSort(vector<int> &arr, int l, int r)
+{
+
+    if(l >= r) return;
+
+    int mid = (l + r) >> 1;
+
+    mergeSort(arr, l, mid);
+    mergeSort(arr, mid+1, r);
+    merge(arr, l, mid, r);
 }
 
 int main()
 {
-    int n, m;
-    cin >> n >> m;
+    int n;
+    cin >> n;
 
-    vector<int> first(n);
-    vector<int> second(m);
+    vector<int> arr(n);
 
     for(int i=0; i<n; i++)
     {
-        cin >> first[i];
-    }
-    for(int i=0; i<m; i++)
-    {
-        cin >> second[i];
+        cin >> arr[i];
     }
 
-    merge(first, second, n, m);
+    mergeSort(arr, 0, n-1);
 
+    for(int i: arr) cout << i << " ";
 
-
-
-
-    return 0;
+    return  0;
 }
