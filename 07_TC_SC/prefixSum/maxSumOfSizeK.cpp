@@ -3,50 +3,58 @@
 
 using namespace std;
 
+// this question can be done by sliding window but we will use prefix sum :)
 
-void printMaxSum(vector<long long>& v, long long n, long long k)
+
+long long printMaxSumOfSizeK(vector<long long> v, int k, int n)
 {
+    vector<long long> prefix;
+    long long sum = 0;
 
-    vector<long long> pre(n);
-
-    long long preSum = 0;
-
-    for(int i=0; i<n; i++)
+    for(int i: v)
     {
-        preSum+=v[i];
-        pre[i] = preSum;
+        sum+=i;
+        prefix.push_back(sum);
     }
 
-    long long l = 0;
+    int l = 0;
     k--;
-    long long sum = LLONG_MIN;
+
+    long long result = LLONG_MIN;
 
     while(k<n)
     {
         long long currSum = 0;
-        if(l == 0) currSum = pre[k];
-        else currSum = pre[k] - pre[l-1];
 
-        if(currSum > sum) sum = currSum;
+        if(l==0) currSum = prefix[k];
+        else
+        {
+            currSum = prefix[k]-prefix[l-1];
+        }
+
+        if(currSum > result) result = currSum;
+
         l++;
         k++;
-        
     }
 
-    cout << sum;
-    
+    return result;
 }
 
 int main()
 {
-    long long n, k;
+
+    int n, k;
     cin >> n >> k;
+
     vector<long long> v(n);
 
-    for(long long i=0; i<n; i++)
+    for(int i=0; i<n; i++)
     {
         cin >> v[i];
     }
-    printMaxSum(v, n, k);
+
+    cout << printMaxSumOfSizeK(v, k, n);
+
     return 0;
 }
