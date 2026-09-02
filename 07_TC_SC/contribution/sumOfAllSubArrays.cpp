@@ -5,23 +5,27 @@ using namespace std;
 
 int main()
 {
+
     int n;
     cin >> n;
-    vector<int> v(n);
+
+    vector<long long> v(n);
 
     for(int i=0; i<n; i++)
     {
         cin >> v[i];
     }
 
-    int sum = 0;
+
+    long long sum = 0;
 
     for(int i=0; i<n; i++)
     {
-        int occur = (i+1) * (n-i);
-        int currSum = occur*v[i];
-        sum += currSum;
+        long long occurrence = (i+1LL) * (n-i);
+        sum += (occurrence) * v[i];
     }
-    cout << "Sum of all sub array: " << sum << endl;
+
+    cout << sum;
+
     return 0;
 }
