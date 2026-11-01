@@ -15,7 +15,7 @@ bool isClosing(char ch)
 }
 
 
-void printAllPairs(string s, int idx)
+void printClosingBracketIdx(string s, int idx)
 {
     int n = s.size();
     stack <int> st;
@@ -44,7 +44,7 @@ int main()
     cin >> s;
     int idx;
     cin >> idx;
-    printAllPairs(s, idx);
+    printClosingBracketIdx(s, idx);
 
     return 0;
 }

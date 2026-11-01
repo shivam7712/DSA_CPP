@@ -19,6 +19,7 @@ bool isPair(char top, char close)
 
 bool isBalanced(string s)
 {
+    // in cpp char to ASCII and ASCII to char is done automatically so this works
     stack <int> st;
     for(char ch: s)
     {
